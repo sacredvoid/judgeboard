@@ -1,89 +1,100 @@
 # JudgeBoard Design System
 
 ## Direction
-Professional bulletin board — the backstage of hackathons. Warm, institutional, trustworthy. Not startup playful, not enterprise cold. Feels like a well-organized career center posting wall.
+Dark-hero tech authority. Deep slate header creates drama and contrast. White cards on light canvas feel crisp. Violet brand conveys expertise/judgment. Amber accents create energy and urgency. Feels like a premium professional tool, not a boring directory.
 
 ## Signature
-Colored topic pin — a 4px top-edge accent on each card, colored by primary topic. Cards feel pinned to the board, not floating.
+Left-side topic bar — a 4px vertical colored accent on each card's left edge. Combined with the dark hero, creates strong visual hierarchy and makes topic scanning instant.
 
 ## Palette
 
 ### Surfaces
-- Canvas: `#FAF9F7` (warm off-white)
-- Surface: `#FFFEFB` (paper-white cards)
-- Surface raised: `#FFFFFF`
+- Canvas: `#FAFAF9` (warm off-white)
+- Surface: `#FFFFFF` (pure white cards)
+- Surface dim: `#F5F5F4` (footer, callout boxes)
+- Hero: `#0F172A` (deep slate — header + hero)
+- Hero subtle: `#1E293B` (hero interactive states)
 
 ### Ink (text hierarchy)
-- Primary: `#2C2A25` (warm near-black)
-- Secondary: `#6B6660`
-- Muted: `#9C9590`
-- Faint: `#C8C3BD`
+- Primary: `#1E293B` (slate-800)
+- Secondary: `#475569` (slate-600)
+- Muted: `#94A3B8` (slate-400)
+- Faint: `#CBD5E1` (slate-300)
+- Inverse: `#F8FAFC` (white-on-dark)
 
 ### Borders
-- Rule: `#E8E4DF`
-- Rule soft: `#F0ECE7`
+- Rule: `#E2E8F0`
+- Rule soft: `#F1F5F9`
 
-### Accent
-- Primary: `#B45309` (warm amber)
-- Hover: `#92400E`
+### Brand — deep violet
+- Primary: `#7C3AED` (Apply buttons, links, badges)
+- Hover: `#6D28D9`
+- Deep: `#5B21B6`
+- Light bg: `#EDE9FE`
+
+### Action — warm amber
+- Primary: `#F59E0B` (header CTA, hero accent text)
+- Hover: `#D97706`
 - Light bg: `#FEF3C7`
-- Text on light: `#78350F`
 
 ### Topic Pin Colors
-- AI: `#7C3AED`
-- Web3: `#EA580C`
-- Health: `#059669`
-- Social Impact: `#0284C7`
-- Security: `#DC2626`
-- Education: `#D97706`
-- General: `#A8A29E`
+- AI: `#8B5CF6` (violet-500)
+- Web3: `#F97316` (orange-500)
+- Health: `#10B981` (emerald-500)
+- Social Impact: `#06B6D4` (cyan-500)
+- Security: `#EF4444` (red-500)
+- Education: `#F59E0B` (amber-500)
+- General: `#94A3B8` (slate-400)
 
 ### Semantic
-- Positive: `#15803D` / bg `#F0FDF4`
-- Caution: `#A16207` / bg `#FEFCE8`
+- Positive: `#059669` / bg `#ECFDF5`
+- Caution: `#D97706` / bg `#FFFBEB`
+- O-1A badge: violet on violet-light
+- Unverified: orange on orange-light
 
 ## Depth Strategy
-Borders only. No shadows. Warm-toned borders at low contrast. Higher surfaces use border to separate, not color shift.
+Light shadow on filter bar (`shadow-sm`). Cards use subtle shadow on hover (`shadow-[0_2px_12px_rgba(0,0,0,0.06)]`). Borders define structure. Dark hero creates the primary depth contrast.
 
 ## Typography
-- Family: DM Sans (Google Fonts)
-- Weights: 400, 500, 600, 700
-- Headlines: Bold, tight tracking (`tracking-tight`)
-- Body: Regular weight, relaxed leading
-- Labels/metadata: Medium weight, muted ink
+- Family: DM Sans
+- Weights: 400 (body), 500 (metadata labels), 600 (semibold UI), 700 (bold headlines)
+- Headlines: Bold, tight tracking
+- Body: Regular, relaxed leading
+- Labels: Muted ink, normal weight
 
 ## Spacing
-- Base unit: 4px
-- Component padding: 20px (p-5)
-- Section gaps: 20px (gap-5)
-- Card grid: 16px gap (gap-4)
-- Max container: 1024px (max-w-5xl)
+- Base: 4px
+- Card padding: 20px (p-5)
+- Section gaps: 20px (space-y-5)
+- Card grid: 16px gap
+- Max container: 1152px (max-w-6xl)
 
 ## Border Radius
-- Cards: 8px (rounded-lg)
-- Buttons/inputs: 6px (rounded-md)
+- Cards: 12px (rounded-xl)
+- Buttons/inputs: 8px (rounded-lg)
 - Badges: 6px (rounded-md)
-- Consistent — no mixing sharp and round
 
 ## Key Patterns
 
-### Card (HackathonCard)
-- Colored top pin (4px, topic color)
-- Surface bg, rule border
-- Internal separator: `border-t border-rule-soft` before CTA row
-- Expired: `opacity-50`
+### Dark Hero
+- `bg-hero` (#0F172A) spans header + hero section
+- White bold headline, amber accent text for emphasis
+- O-1A callout uses hero-subtle bg with a violet dot indicator
+- Directory section uses negative margin (-mt-4) to overlap hero edge
 
-### Badges
-- O-1A: amber bg (#FEF3C7), dark amber text (#92400E)
-- Unverified: orange bg (#FFF7ED), dark orange text (#9A3412)
-- Topics: 10% opacity of pin color as bg, pin color as text
+### Card
+- Left topic bar (4px wide, full height)
+- Flex layout: bar + content
+- Internal separator before CTA footer
+- Violet Apply button
+- Hover: subtle box shadow appears
 
-### Filters
-- Styled selects in a row (stacked on mobile)
-- Surface bg, rule border, accent focus ring
-- 44px min height for touch targets
+### Header
+- Dark bg, continuous with hero
+- Logo: white + amber "Board"
+- Amber CTA button (contrasts against dark)
 
-### Hero
-- Type-forward, no gradient
-- Surface bg with bottom border
-- Left-aligned headline, max-w-5xl
+### OG Image
+- Dark slate bg matching hero
+- Topic color bar strip across top
+- White + amber logo treatment

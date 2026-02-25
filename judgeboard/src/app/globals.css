@@ -2,43 +2,53 @@
 
 @theme inline {
   /* Canvas & surfaces */
-  --color-canvas: #FAF9F7;
-  --color-surface: #FFFEFB;
-  --color-surface-raised: #FFFFFF;
+  --color-canvas: #FAFAF9;
+  --color-surface: #FFFFFF;
+  --color-surface-dim: #F5F5F4;
+  --color-hero: #0F172A;
+  --color-hero-subtle: #1E293B;
 
   /* Ink hierarchy */
-  --color-ink: #2C2A25;
-  --color-ink-secondary: #6B6660;
-  --color-ink-muted: #9C9590;
-  --color-ink-faint: #C8C3BD;
+  --color-ink: #1E293B;
+  --color-ink-secondary: #475569;
+  --color-ink-muted: #94A3B8;
+  --color-ink-faint: #CBD5E1;
+  --color-ink-inverse: #F8FAFC;
 
   /* Borders */
-  --color-rule: #E8E4DF;
-  --color-rule-soft: #F0ECE7;
+  --color-rule: #E2E8F0;
+  --color-rule-soft: #F1F5F9;
 
-  /* Accent — amber/walnut */
-  --color-accent: #B45309;
-  --color-accent-hover: #92400E;
-  --color-accent-light: #FEF3C7;
-  --color-accent-text: #78350F;
+  /* Brand — deep violet */
+  --color-brand: #7C3AED;
+  --color-brand-hover: #6D28D9;
+  --color-brand-deep: #5B21B6;
+  --color-brand-light: #EDE9FE;
+  --color-brand-text: #5B21B6;
 
-  /* Topic pins */
-  --color-pin-ai: #7C3AED;
-  --color-pin-web3: #EA580C;
-  --color-pin-health: #059669;
-  --color-pin-social: #0284C7;
-  --color-pin-security: #DC2626;
-  --color-pin-education: #D97706;
-  --color-pin-general: #A8A29E;
+  /* Action — warm amber */
+  --color-action: #F59E0B;
+  --color-action-hover: #D97706;
+  --color-action-text: #FFFFFF;
+  --color-action-light: #FEF3C7;
+
+  /* Topic accents */
+  --color-pin-ai: #8B5CF6;
+  --color-pin-web3: #F97316;
+  --color-pin-health: #10B981;
+  --color-pin-social: #06B6D4;
+  --color-pin-security: #EF4444;
+  --color-pin-education: #F59E0B;
+  --color-pin-general: #94A3B8;
 
   /* Semantic */
-  --color-positive: #15803D;
-  --color-positive-light: #F0FDF4;
-  --color-caution: #A16207;
-  --color-caution-light: #FEFCE8;
-  --color-badge-eligible: #92400E;
-  --color-badge-eligible-bg: #FEF3C7;
-  --color-badge-unverified: #9A3412;
+  --color-positive: #059669;
+  --color-positive-light: #ECFDF5;
+  --color-caution: #D97706;
+  --color-caution-light: #FFFBEB;
+  --color-badge-eligible: #7C3AED;
+  --color-badge-eligible-bg: #EDE9FE;
+  --color-badge-unverified: #EA580C;
   --color-badge-unverified-bg: #FFF7ED;
 }
 
@@ -47,7 +57,6 @@ body {
   color: var(--color-ink);
 }
 
-/* Respect motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

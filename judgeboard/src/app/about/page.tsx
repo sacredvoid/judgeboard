@@ -53,7 +53,7 @@ export default function AboutPage() {
           </p>
           <p className="mt-3">
             Look for the{" "}
-            <span className="inline-flex items-center rounded-md bg-badge-eligible-bg px-2 py-0.5 text-xs font-medium text-badge-eligible">
+            <span className="inline-flex items-center rounded-md bg-badge-eligible-bg px-2 py-0.5 text-xs font-semibold text-badge-eligible">
               O-1A
             </span>{" "}
             badge on listings. Always consult with an immigration attorney about your specific case.
@@ -68,7 +68,7 @@ export default function AboutPage() {
           </p>
           <a
             href="mailto:hello@judgeboard.dev?subject=New%20Opportunity%20Submission&body=Event%20name%3A%0AOrganizer%3A%0ADate%3A%0ALocation%3A%0AApplication%20URL%3A%0ARoles%20needed%20(judge%2Fmentor)%3A%0ABrief%20description%3A"
-            className="mt-4 inline-flex rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2"
+            className="mt-4 inline-flex rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-brand/30 focus:ring-offset-2"
           >
             Submit via Email
           </a>
@@ -83,7 +83,7 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <section className="rounded-lg border border-rule bg-canvas p-5">
+        <section className="rounded-xl border border-rule bg-surface-dim p-5">
           <h2 className="text-base font-semibold text-ink">About this project</h2>
           <p className="mt-2 text-sm">
             JudgeBoard was built to solve a real problem: finding hackathon judging and mentoring

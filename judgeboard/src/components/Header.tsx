@@ -7,38 +7,36 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="border-b border-rule bg-surface">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="text-lg font-bold tracking-tight text-ink">
-          Judge<span className="text-accent">Board</span>
+    <header className="bg-hero">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+        <Link href="/" className="text-lg font-bold tracking-tight text-white">
+          Judge<span className="text-action">Board</span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-5 sm:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-6 sm:flex" aria-label="Main navigation">
           <Link
             href="/"
-            className="text-sm font-medium text-ink-secondary transition-colors hover:text-ink"
+            className="text-sm font-medium text-ink-faint transition-colors hover:text-white"
           >
             Browse
           </Link>
           <Link
             href="/about"
-            className="text-sm font-medium text-ink-secondary transition-colors hover:text-ink"
+            className="text-sm font-medium text-ink-faint transition-colors hover:text-white"
           >
             About
           </Link>
           <Link
             href="/about#submit"
-            className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2"
+            className="rounded-lg bg-action px-4 py-2 text-sm font-semibold text-hero transition-colors hover:bg-action-hover"
           >
             Submit Opportunity
           </Link>
         </nav>
 
-        {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-md text-ink-secondary transition-colors hover:bg-rule-soft sm:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-hero-subtle sm:hidden"
           aria-expanded={menuOpen}
           aria-label="Toggle navigation menu"
         >
@@ -68,31 +66,27 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       {menuOpen && (
-        <nav
-          className="border-t border-rule-soft px-4 pb-4 sm:hidden"
-          aria-label="Mobile navigation"
-        >
+        <nav className="border-t border-hero-subtle px-4 pb-4 sm:hidden" aria-label="Mobile navigation">
           <div className="flex flex-col gap-1 pt-2">
             <Link
               href="/"
               onClick={() => setMenuOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-ink-secondary transition-colors hover:bg-canvas"
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-faint transition-colors hover:bg-hero-subtle hover:text-white"
             >
               Browse
             </Link>
             <Link
               href="/about"
               onClick={() => setMenuOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-ink-secondary transition-colors hover:bg-canvas"
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-faint transition-colors hover:bg-hero-subtle hover:text-white"
             >
               About
             </Link>
             <Link
               href="/about#submit"
               onClick={() => setMenuOpen(false)}
-              className="mt-1 rounded-md bg-accent px-3 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+              className="mt-1 rounded-lg bg-action px-3 py-2.5 text-center text-sm font-semibold text-hero transition-colors hover:bg-action-hover"
             >
               Submit Opportunity
             </Link>

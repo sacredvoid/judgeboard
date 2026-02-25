@@ -15,7 +15,7 @@ const topicLabels: Record<string, string> = {
   general: "General",
 };
 
-const topicPinColor: Record<string, string> = {
+const pinColor: Record<string, string> = {
   ai: "bg-pin-ai",
   web3: "bg-pin-web3",
   health: "bg-pin-health",
@@ -25,17 +25,17 @@ const topicPinColor: Record<string, string> = {
   general: "bg-pin-general",
 };
 
-const topicBadgeStyle: Record<string, string> = {
+const topicBadge: Record<string, string> = {
   ai: "bg-pin-ai/10 text-pin-ai",
   web3: "bg-pin-web3/10 text-pin-web3",
   health: "bg-pin-health/10 text-pin-health",
   "social-impact": "bg-pin-social/10 text-pin-social",
   security: "bg-pin-security/10 text-pin-security",
   education: "bg-pin-education/10 text-pin-education",
-  general: "bg-pin-general/10 text-pin-general",
+  general: "bg-pin-general/15 text-ink-muted",
 };
 
-const locationTypeLabel: Record<string, string> = {
+const locationLabel: Record<string, string> = {
   "in-person": "In-Person",
   virtual: "Virtual",
   hybrid: "Hybrid",
@@ -49,18 +49,20 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
 
   return (
     <article
-      className={`group relative overflow-hidden rounded-lg border border-rule bg-surface transition-colors ${
-        deadlinePassed ? "opacity-50" : "hover:border-rule/80"
+      className={`group relative flex overflow-hidden rounded-xl border border-rule bg-surface transition-all ${
+        deadlinePassed
+          ? "opacity-50"
+          : "hover:border-rule hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
       }`}
       aria-label={`${hackathon.name} by ${hackathon.organizer}`}
     >
-      {/* Topic pin — colored top edge */}
-      <div className={`h-1 ${topicPinColor[primaryTopic] || "bg-pin-general"}`} />
+      {/* Left topic bar */}
+      <div className={`w-1 shrink-0 ${pinColor[primaryTopic] || "bg-pin-general"}`} />
 
-      <div className="p-5">
-        {/* Badges row */}
-        <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
-          <div>
+      <div className="flex-1 p-5">
+        {/* Header row */}
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div className="min-w-0">
             <h3 className="text-base font-semibold leading-snug text-ink">
               {hackathon.name}
             </h3>
@@ -69,7 +71,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
           <div className="flex shrink-0 gap-1.5">
             {hackathon.immigrationEligible && (
               <span
-                className="inline-flex items-center rounded-md bg-badge-eligible-bg px-2 py-0.5 text-xs font-medium text-badge-eligible"
+                className="inline-flex items-center rounded-md bg-badge-eligible-bg px-2 py-0.5 text-xs font-semibold text-badge-eligible"
                 title="Counts toward O-1A/EB-1 portfolio"
               >
                 O-1A
@@ -96,7 +98,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
             <span
               key={topic}
               className={`inline-flex rounded-md px-2 py-0.5 text-xs font-medium ${
-                topicBadgeStyle[topic] || topicBadgeStyle.general
+                topicBadge[topic] || topicBadge.general
               }`}
             >
               {topicLabels[topic] || topic}
@@ -105,31 +107,29 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
           {hackathon.rolesNeeded.map((role) => (
             <span
               key={role}
-              className="inline-flex rounded-md border border-rule bg-canvas px-2 py-0.5 text-xs font-medium text-ink-secondary"
+              className="inline-flex rounded-md border border-rule px-2 py-0.5 text-xs font-medium text-ink-secondary"
             >
               {role.charAt(0).toUpperCase() + role.slice(1)}
             </span>
           ))}
         </div>
 
-        {/* Metadata grid */}
+        {/* Metadata */}
         <div className="mb-4 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
           <div>
-            <span className="text-ink-muted">Date</span>{" "}
+            <span className="text-ink-muted">Date </span>
             <span className="font-medium text-ink">{formatDate(hackathon.date)}</span>
           </div>
           <div>
-            <span className="text-ink-muted">Format</span>{" "}
-            <span className="font-medium text-ink">
-              {locationTypeLabel[hackathon.locationType]}
-            </span>
+            <span className="text-ink-muted">Format </span>
+            <span className="font-medium text-ink">{locationLabel[hackathon.locationType]}</span>
           </div>
           <div>
-            <span className="text-ink-muted">Location</span>{" "}
+            <span className="text-ink-muted">Location </span>
             <span className="font-medium text-ink">{hackathon.location}</span>
           </div>
           <div>
-            <span className="text-ink-muted">Level</span>{" "}
+            <span className="text-ink-muted">Level </span>
             <span className="font-medium text-ink">
               {hackathon.experienceLevel === "any"
                 ? "All levels"
@@ -139,7 +139,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
           </div>
         </div>
 
-        {/* Footer: deadline + CTA */}
+        {/* Footer */}
         <div className="flex items-center justify-between gap-3 border-t border-rule-soft pt-4">
           <div className="text-sm">
             {isOngoing ? (
@@ -147,7 +147,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
             ) : deadlinePassed ? (
               <span className="text-ink-faint">Deadline passed</span>
             ) : deadlineSoon ? (
-              <span className="font-medium text-caution">
+              <span className="font-semibold text-caution">
                 Due {formatDate(hackathon.deadline)}
               </span>
             ) : hackathon.deadline === "unknown" ? (
@@ -164,7 +164,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Apply to ${hackathon.name}`}
-              className="shrink-0 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2"
+              className="shrink-0 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-brand/30 focus:ring-offset-2"
             >
               Apply
             </a>
