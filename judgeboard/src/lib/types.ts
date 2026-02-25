@@ -12,6 +12,8 @@ export interface Hackathon {
   applyUrl: string;
   description: string;
   immigrationEligible: boolean;
+  verified?: boolean;
+  verificationNote?: string;
 }
 
 export interface Filters {

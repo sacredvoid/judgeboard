@@ -30,7 +30,13 @@ const locationTypeIcon: Record<string, string> = {
   hybrid: "Hybrid",
 };
 
+function isSpecialDate(str: string): boolean {
+  return str === "ongoing" || str === "unknown";
+}
+
 function formatDate(dateStr: string): string {
+  if (dateStr === "ongoing") return "Ongoing";
+  if (dateStr === "unknown") return "TBD";
   return new Date(dateStr + "T00:00:00").toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -39,6 +45,7 @@ function formatDate(dateStr: string): string {
 }
 
 function isDeadlineSoon(deadline: string): boolean {
+  if (isSpecialDate(deadline)) return false;
   const deadlineDate = new Date(deadline + "T00:00:00");
   const now = new Date();
   const daysUntil = (deadlineDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
@@ -46,12 +53,14 @@ function isDeadlineSoon(deadline: string): boolean {
 }
 
 function isDeadlinePassed(deadline: string): boolean {
+  if (isSpecialDate(deadline)) return false;
   return new Date(deadline + "T00:00:00") < new Date();
 }
 
 export default function HackathonCard({ hackathon }: HackathonCardProps) {
   const deadlinePassed = isDeadlinePassed(hackathon.deadline);
   const deadlineSoon = !deadlinePassed && isDeadlineSoon(hackathon.deadline);
+  const isOngoing = hackathon.deadline === "ongoing";
 
   return (
     <div
@@ -59,16 +68,21 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
         deadlinePassed ? "border-zinc-200 opacity-60" : "border-zinc-200 hover:border-indigo-200"
       }`}
     >
-      {hackathon.immigrationEligible && (
-        <div className="absolute right-4 top-4">
+      <div className="absolute right-4 top-4 flex gap-1.5">
+        {hackathon.immigrationEligible && (
           <span className="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700" title="Counts toward O-1A/EB-1 portfolio">
             O-1A Eligible
           </span>
-        </div>
-      )}
+        )}
+        {hackathon.verified === false && (
+          <span className="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700" title={hackathon.verificationNote || "Not fully verified"}>
+            Unverified
+          </span>
+        )}
+      </div>
 
       <div className="mb-3">
-        <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-indigo-600 transition-colors pr-24">
+        <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-indigo-600 transition-colors pr-32">
           {hackathon.name}
         </h3>
         <p className="text-sm text-zinc-500">{hackathon.organizer}</p>
@@ -119,12 +133,16 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
 
       <div className="flex items-center justify-between">
         <div className="text-sm">
-          {deadlinePassed ? (
+          {isOngoing ? (
+            <span className="font-medium text-emerald-600">Always accepting applications</span>
+          ) : deadlinePassed ? (
             <span className="font-medium text-zinc-400">Deadline passed</span>
           ) : deadlineSoon ? (
             <span className="font-medium text-amber-600">
               Deadline: {formatDate(hackathon.deadline)} — Apply soon!
             </span>
+          ) : hackathon.deadline === "unknown" ? (
+            <span className="text-zinc-500">Deadline TBD</span>
           ) : (
             <span className="text-zinc-500">
               Apply by {formatDate(hackathon.deadline)}

@@ -9,6 +9,17 @@ interface DirectoryProps {
   hackathons: Hackathon[];
 }
 
+function getDeadlineSort(deadline: string): number {
+  if (deadline === "ongoing") return -Infinity; // ongoing always first
+  if (deadline === "unknown") return Infinity - 1; // unknown near end but before expired
+  return new Date(deadline + "T00:00:00").getTime();
+}
+
+function isExpired(deadline: string): boolean {
+  if (deadline === "ongoing" || deadline === "unknown") return false;
+  return new Date(deadline + "T00:00:00") < new Date();
+}
+
 export default function Directory({ hackathons }: DirectoryProps) {
   const [filters, setFilters] = useState<Filters>({
     locationType: "",
@@ -28,12 +39,10 @@ export default function Directory({ hackathons }: DirectoryProps) {
         return true;
       })
       .sort((a, b) => {
-        // Sort: open deadlines first (by deadline date), then passed deadlines
-        const now = new Date();
-        const aExpired = new Date(a.deadline + "T00:00:00") < now;
-        const bExpired = new Date(b.deadline + "T00:00:00") < now;
+        const aExpired = isExpired(a.deadline);
+        const bExpired = isExpired(b.deadline);
         if (aExpired !== bExpired) return aExpired ? 1 : -1;
-        return new Date(a.deadline + "T00:00:00").getTime() - new Date(b.deadline + "T00:00:00").getTime();
+        return getDeadlineSort(a.deadline) - getDeadlineSort(b.deadline);
       });
   }, [hackathons, filters]);
 
