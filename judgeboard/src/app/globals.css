@@ -1,55 +1,30 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Canvas & surfaces */
   --color-canvas: #FAFAF9;
   --color-surface: #FFFFFF;
   --color-surface-dim: #F5F5F4;
-  --color-hero: #0F172A;
-  --color-hero-subtle: #1E293B;
+  --color-hero: #0C0A09;
+  --color-hero-subtle: #1C1917;
 
-  /* Ink hierarchy */
-  --color-ink: #1E293B;
-  --color-ink-secondary: #475569;
-  --color-ink-muted: #94A3B8;
-  --color-ink-faint: #CBD5E1;
-  --color-ink-inverse: #F8FAFC;
+  --color-ink: #1C1917;
+  --color-ink-secondary: #57534E;
+  --color-ink-muted: #A8A29E;
+  --color-ink-faint: #D6D3D1;
+  --color-ink-inverse: #FAFAF9;
 
-  /* Borders */
-  --color-rule: #E2E8F0;
-  --color-rule-soft: #F1F5F9;
+  --color-rule: #E7E5E4;
+  --color-rule-soft: #F5F5F4;
 
-  /* Brand — deep violet */
-  --color-brand: #7C3AED;
-  --color-brand-hover: #6D28D9;
-  --color-brand-deep: #5B21B6;
-  --color-brand-light: #EDE9FE;
-  --color-brand-text: #5B21B6;
+  --color-accent: #0F766E;
+  --color-accent-hover: #0D9488;
+  --color-accent-deep: #115E59;
+  --color-accent-light: #F0FDFA;
+  --color-accent-muted: #99F6E4;
 
-  /* Action — warm amber */
-  --color-action: #F59E0B;
-  --color-action-hover: #D97706;
-  --color-action-text: #FFFFFF;
-  --color-action-light: #FEF3C7;
-
-  /* Topic accents */
-  --color-pin-ai: #8B5CF6;
-  --color-pin-web3: #F97316;
-  --color-pin-health: #10B981;
-  --color-pin-social: #06B6D4;
-  --color-pin-security: #EF4444;
-  --color-pin-education: #F59E0B;
-  --color-pin-general: #94A3B8;
-
-  /* Semantic */
-  --color-positive: #059669;
-  --color-positive-light: #ECFDF5;
-  --color-caution: #D97706;
-  --color-caution-light: #FFFBEB;
-  --color-badge-eligible: #7C3AED;
-  --color-badge-eligible-bg: #EDE9FE;
-  --color-badge-unverified: #EA580C;
-  --color-badge-unverified-bg: #FFF7ED;
+  --color-positive: #16A34A;
+  --color-caution: #CA8A04;
+  --color-caution-light: #FEFCE8;
 }
 
 body {
