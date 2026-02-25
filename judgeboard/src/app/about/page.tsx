@@ -4,11 +4,14 @@ export const metadata: Metadata = {
   title: "About — JudgeBoard",
   description:
     "Learn about JudgeBoard, the directory for hackathon judge and mentor opportunities. Submit your own opportunities or learn how we can help your career.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="text-3xl font-bold tracking-tight text-zinc-900">About JudgeBoard</h1>
 
       <div className="mt-8 space-y-8 text-zinc-600 leading-relaxed">
@@ -49,32 +52,35 @@ export default function AboutPage() {
             well-known events with formal judging panels.
           </p>
           <p className="mt-3">
-            Look for the <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">O-1A Eligible</span> badge
-            on listings. Always consult with an immigration attorney about your specific case.
+            Look for the{" "}
+            <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">
+              O-1A Eligible
+            </span>{" "}
+            badge on listings. Always consult with an immigration attorney about your specific case.
           </p>
         </section>
 
-        <section>
+        <section id="submit">
           <h2 className="text-xl font-semibold text-zinc-900">Submit an Opportunity</h2>
           <p className="mt-3">
             Know of a hackathon looking for judges or mentors? We&apos;d love to add it.
+            Email us with the event name, dates, location, and a link to the judge/mentor
+            application page.
           </p>
           <a
-            href="https://forms.gle/your-google-form"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+            href="mailto:hello@judgeboard.dev?subject=New%20Opportunity%20Submission&body=Event%20name%3A%0AOrganizer%3A%0ADate%3A%0ALocation%3A%0AApplication%20URL%3A%0ARoles%20needed%20(judge%2Fmentor)%3A%0ABrief%20description%3A"
+            className="mt-4 inline-flex rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
-            Submit via Google Form
+            Submit via Email
           </a>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-zinc-900">For Organizers</h2>
           <p className="mt-3">
-            If you&apos;re organizing a hackathon and need judges or mentors, submit your event
-            through our form and we&apos;ll add it to the directory. It&apos;s free. We want to
-            help you find qualified volunteers faster.
+            If you&apos;re organizing a hackathon and need judges or mentors, send us your event
+            details and we&apos;ll add it to the directory. It&apos;s free. We want to help you
+            find qualified volunteers faster.
           </p>
         </section>
 

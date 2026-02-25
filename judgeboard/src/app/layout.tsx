@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,12 +22,17 @@ export const metadata: Metadata = {
     "hackathon volunteering",
     "tech judge",
   ],
+  metadataBase: new URL("https://judgeboard.dev"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "JudgeBoard — Find Hackathon Judge & Mentor Opportunities",
     description:
       "The directory of hackathons actively seeking judges and mentors. Browse, filter, and apply.",
     type: "website",
     url: "https://judgeboard.dev",
+    siteName: "JudgeBoard",
   },
   twitter: {
     card: "summary_large_image",
@@ -44,9 +50,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen bg-zinc-50 antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="min-h-[calc(100vh-140px)]">{children}</main>
+        <main id="main-content" className="min-h-[calc(100vh-140px)]">
+          {children}
+        </main>
         <Footer />
+        <JsonLd />
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import { Hackathon } from "@/lib/types";
+import { formatDate, isDeadlineSoon, isExpired } from "@/lib/dates";
 
 interface HackathonCardProps {
   hackathon: Hackathon;
@@ -24,65 +25,45 @@ const topicColors: Record<string, string> = {
   general: "bg-zinc-100 text-zinc-600",
 };
 
-const locationTypeIcon: Record<string, string> = {
+const locationTypeLabel: Record<string, string> = {
   "in-person": "In-Person",
   virtual: "Virtual",
   hybrid: "Hybrid",
 };
 
-function isSpecialDate(str: string): boolean {
-  return str === "ongoing" || str === "unknown";
-}
-
-function formatDate(dateStr: string): string {
-  if (dateStr === "ongoing") return "Ongoing";
-  if (dateStr === "unknown") return "TBD";
-  return new Date(dateStr + "T00:00:00").toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
-function isDeadlineSoon(deadline: string): boolean {
-  if (isSpecialDate(deadline)) return false;
-  const deadlineDate = new Date(deadline + "T00:00:00");
-  const now = new Date();
-  const daysUntil = (deadlineDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
-  return daysUntil >= 0 && daysUntil <= 14;
-}
-
-function isDeadlinePassed(deadline: string): boolean {
-  if (isSpecialDate(deadline)) return false;
-  return new Date(deadline + "T00:00:00") < new Date();
-}
-
 export default function HackathonCard({ hackathon }: HackathonCardProps) {
-  const deadlinePassed = isDeadlinePassed(hackathon.deadline);
+  const deadlinePassed = isExpired(hackathon.deadline);
   const deadlineSoon = !deadlinePassed && isDeadlineSoon(hackathon.deadline);
   const isOngoing = hackathon.deadline === "ongoing";
 
   return (
-    <div
-      className={`group relative rounded-xl border bg-white p-6 shadow-sm transition-all hover:shadow-md ${
+    <article
+      className={`group relative rounded-xl border bg-white p-5 shadow-sm transition-shadow motion-safe:hover:shadow-md sm:p-6 ${
         deadlinePassed ? "border-zinc-200 opacity-60" : "border-zinc-200 hover:border-indigo-200"
       }`}
+      aria-label={`${hackathon.name} by ${hackathon.organizer}`}
     >
       <div className="absolute right-4 top-4 flex gap-1.5">
         {hackathon.immigrationEligible && (
-          <span className="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700" title="Counts toward O-1A/EB-1 portfolio">
+          <span
+            className="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700"
+            title="Counts toward O-1A/EB-1 portfolio"
+          >
             O-1A Eligible
           </span>
         )}
         {hackathon.verified === false && (
-          <span className="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700" title={hackathon.verificationNote || "Not fully verified"}>
+          <span
+            className="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700"
+            title={hackathon.verificationNote || "Not fully verified"}
+          >
             Unverified
           </span>
         )}
       </div>
 
       <div className="mb-3">
-        <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-indigo-600 transition-colors pr-32">
+        <h3 className="text-lg font-semibold text-zinc-900 transition-colors motion-safe:group-hover:text-indigo-600 pr-28 sm:pr-32">
           {hackathon.name}
         </h3>
         <p className="text-sm text-zinc-500">{hackathon.organizer}</p>
@@ -117,7 +98,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
         </div>
         <div className="text-zinc-500">
           <span className="font-medium text-zinc-700">Format:</span>{" "}
-          {locationTypeIcon[hackathon.locationType]}
+          {locationTypeLabel[hackathon.locationType]}
         </div>
         <div className="text-zinc-500">
           <span className="font-medium text-zinc-700">Location:</span> {hackathon.location}
@@ -131,7 +112,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-3">
         <div className="text-sm">
           {isOngoing ? (
             <span className="font-medium text-emerald-600">Always accepting applications</span>
@@ -144,9 +125,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
           ) : hackathon.deadline === "unknown" ? (
             <span className="text-zinc-500">Deadline TBD</span>
           ) : (
-            <span className="text-zinc-500">
-              Apply by {formatDate(hackathon.deadline)}
-            </span>
+            <span className="text-zinc-500">Apply by {formatDate(hackathon.deadline)}</span>
           )}
         </div>
         {!deadlinePassed && (
@@ -154,12 +133,13 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
             href={hackathon.applyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+            aria-label={`Apply to ${hackathon.name}`}
+            className="shrink-0 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Apply
           </a>
         )}
       </div>
-    </div>
+    </article>
   );
 }
