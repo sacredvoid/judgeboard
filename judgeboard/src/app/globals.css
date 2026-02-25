@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+@theme inline {
+  /* Canvas & surfaces */
+  --color-canvas: #FAF9F7;
+  --color-surface: #FFFEFB;
+  --color-surface-raised: #FFFFFF;
+
+  /* Ink hierarchy */
+  --color-ink: #2C2A25;
+  --color-ink-secondary: #6B6660;
+  --color-ink-muted: #9C9590;
+  --color-ink-faint: #C8C3BD;
+
+  /* Borders */
+  --color-rule: #E8E4DF;
+  --color-rule-soft: #F0ECE7;
+
+  /* Accent — amber/walnut */
+  --color-accent: #B45309;
+  --color-accent-hover: #92400E;
+  --color-accent-light: #FEF3C7;
+  --color-accent-text: #78350F;
+
+  /* Topic pins */
+  --color-pin-ai: #7C3AED;
+  --color-pin-web3: #EA580C;
+  --color-pin-health: #059669;
+  --color-pin-social: #0284C7;
+  --color-pin-security: #DC2626;
+  --color-pin-education: #D97706;
+  --color-pin-general: #A8A29E;
+
+  /* Semantic */
+  --color-positive: #15803D;
+  --color-positive-light: #F0FDF4;
+  --color-caution: #A16207;
+  --color-caution-light: #FEFCE8;
+  --color-badge-eligible: #92400E;
+  --color-badge-eligible-bg: #FEF3C7;
+  --color-badge-unverified: #9A3412;
+  --color-badge-unverified-bg: #FFF7ED;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+/* Respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -14,14 +14,14 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
   };
 
   const selectClass =
-    "min-h-[44px] rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-700 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20";
+    "min-h-[44px] appearance-none rounded-md border border-rule bg-surface px-3 py-2 pr-8 text-sm text-ink transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20";
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+    <div className="rounded-lg border border-rule bg-surface p-4">
       <fieldset>
         <legend className="sr-only">Filter opportunities</legend>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+          <div>
             <label htmlFor="filter-format" className="sr-only">
               Format
             </label>
@@ -38,7 +38,7 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
             </select>
           </div>
 
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+          <div>
             <label htmlFor="filter-topic" className="sr-only">
               Topic
             </label>
@@ -59,7 +59,7 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
             </select>
           </div>
 
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+          <div>
             <label htmlFor="filter-experience" className="sr-only">
               Experience level
             </label>
@@ -76,7 +76,7 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
             </select>
           </div>
 
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+          <div>
             <label htmlFor="filter-role" className="sr-only">
               Role
             </label>
@@ -93,7 +93,7 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
           </div>
 
           <div
-            className="mt-1 text-sm text-zinc-500 sm:ml-auto sm:mt-0"
+            className="mt-1 text-sm font-medium text-ink-muted sm:ml-auto sm:mt-0"
             role="status"
             aria-live="polite"
           >

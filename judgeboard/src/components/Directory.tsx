@@ -37,20 +37,22 @@ export default function Directory({ hackathons }: DirectoryProps) {
   }, [hackathons, filters]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <FilterBar filters={filters} onFilterChange={setFilters} resultCount={filtered.length} />
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-zinc-200 bg-white py-16 text-center">
-          <p className="text-lg font-medium text-zinc-600">No opportunities match your filters</p>
-          <p className="mt-2 text-sm text-zinc-400">
+        <div className="rounded-lg border border-rule bg-surface py-16 text-center">
+          <p className="text-base font-medium text-ink-secondary">
+            No opportunities match your filters
+          </p>
+          <p className="mt-2 text-sm text-ink-muted">
             Try adjusting your filters or check back later.
           </p>
           <button
             onClick={() =>
               setFilters({ locationType: "", topic: "", experienceLevel: "", roleNeeded: "" })
             }
-            className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-700 focus:outline-none focus:underline"
+            className="mt-4 text-sm font-medium text-accent hover:text-accent-hover focus:outline-none focus:underline"
           >
             Clear all filters
           </button>
