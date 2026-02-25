@@ -1,0 +1,93 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About — JudgeBoard",
+  description:
+    "Learn about JudgeBoard, the directory for hackathon judge and mentor opportunities. Submit your own opportunities or learn how we can help your career.",
+};
+
+export default function AboutPage() {
+  return (
+    <div className="mx-auto max-w-3xl px-6 py-16">
+      <h1 className="text-3xl font-bold tracking-tight text-zinc-900">About JudgeBoard</h1>
+
+      <div className="mt-8 space-y-8 text-zinc-600 leading-relaxed">
+        <section>
+          <h2 className="text-xl font-semibold text-zinc-900">What is this?</h2>
+          <p className="mt-3">
+            JudgeBoard is a curated directory of hackathons actively looking for judges and mentors.
+            We aggregate opportunities from across the web — Devpost, MLH, university hackathons,
+            corporate events, and community-organized hacks — into one browsable, filterable list.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-zinc-900">Who is this for?</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5">
+            <li>
+              <strong>Senior engineers and designers</strong> who want to give back to the
+              developer community by mentoring the next generation.
+            </li>
+            <li>
+              <strong>Professionals building immigration portfolios</strong> — if you&apos;re
+              pursuing an O-1A visa or EB-1 green card, documented judging at recognized events
+              is valuable evidence of extraordinary ability.
+            </li>
+            <li>
+              <strong>Industry experts</strong> curious about the hackathon scene and interested
+              in evaluating cutting-edge projects in their field.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-zinc-900">O-1A / EB-1 Immigration</h2>
+          <p className="mt-3">
+            Serving as a judge for hackathons and competitions can be used as evidence for the
+            &quot;Judging the work of others&quot; criterion in O-1A visa and EB-1A green card
+            applications. We flag opportunities that are particularly relevant — typically larger,
+            well-known events with formal judging panels.
+          </p>
+          <p className="mt-3">
+            Look for the <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">O-1A Eligible</span> badge
+            on listings. Always consult with an immigration attorney about your specific case.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-zinc-900">Submit an Opportunity</h2>
+          <p className="mt-3">
+            Know of a hackathon looking for judges or mentors? We&apos;d love to add it.
+          </p>
+          <a
+            href="https://forms.gle/your-google-form"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+          >
+            Submit via Google Form
+          </a>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-zinc-900">For Organizers</h2>
+          <p className="mt-3">
+            If you&apos;re organizing a hackathon and need judges or mentors, submit your event
+            through our form and we&apos;ll add it to the directory. It&apos;s free. We want to
+            help you find qualified volunteers faster.
+          </p>
+        </section>
+
+        <section className="rounded-xl border border-zinc-200 bg-zinc-50 p-6">
+          <h2 className="text-lg font-semibold text-zinc-900">About this project</h2>
+          <p className="mt-2 text-sm">
+            JudgeBoard was built to solve a real problem: finding hackathon judging and mentoring
+            opportunities is unreasonably difficult. Opportunities are scattered across dozens of
+            platforms, Google Forms, social media posts, and email chains. We&apos;re fixing that
+            with a simple, well-organized directory.
+          </p>
+        </section>
+      </div>
+    </div>
+  );
+}
