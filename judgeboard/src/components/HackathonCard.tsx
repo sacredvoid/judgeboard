@@ -1,6 +1,15 @@
 import { Hackathon } from "@/lib/types";
 import { formatDate, isDeadlineSoon, isExpired } from "@/lib/dates";
 
+function isSafeUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "https:" || parsed.protocol === "http:" || parsed.protocol === "mailto:";
+  } catch {
+    return false;
+  }
+}
+
 interface HackathonCardProps {
   hackathon: Hackathon;
 }
@@ -33,13 +42,13 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
           ? "opacity-50"
           : "hover:border-ink-faint hover:shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
       }`}
-      aria-label={`${hackathon.name} by ${hackathon.organizer}`}
+      aria-labelledby={`card-title-${hackathon.id}`}
     >
       <div className="p-5">
         {/* Header */}
         <div className="mb-3 flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="text-base font-semibold leading-snug text-ink">
+            <h3 id={`card-title-${hackathon.id}`} className="text-base font-semibold leading-snug text-ink">
               {hackathon.name}
             </h3>
             <p className="mt-0.5 text-sm text-ink-muted">{hackathon.organizer}</p>
@@ -128,7 +137,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
               <span className="text-ink-muted">Apply by {formatDate(hackathon.deadline)}</span>
             )}
           </div>
-          {!deadlinePassed && (
+          {!deadlinePassed && isSafeUrl(hackathon.applyUrl) && (
             <a
               href={hackathon.applyUrl}
               target="_blank"

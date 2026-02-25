@@ -171,9 +171,10 @@
     "rolesNeeded": ["judge", "mentor"],
     "experienceLevel": "senior",
     "applyUrl": "https://hackmit.org/",
-    "description": "One of the largest collegiate hackathons with 1000+ participants. Mentors select shifts to help with technical problems. Undergrads not eligible for mentor/judge roles.",
+    "description": "One of the largest collegiate hackathons with 1000+ participants. Mentors select shifts to help with technical problems. Check hackmit.org for 2026 judge/mentor application when available.",
     "immigrationEligible": true,
-    "verified": true
+    "verified": false,
+    "verificationNote": "URL points to HackMIT homepage. Dedicated judge/mentor application page not yet available for 2026."
   },
   {
     "id": "lablab-ai-mentor",
@@ -339,22 +340,6 @@
     "verified": true
   },
   {
-    "id": "developerweek-2026-hackathon",
-    "name": "DeveloperWeek 2026 Hackathon",
-    "organizer": "DeveloperWeek / DevNetwork",
-    "date": "2026-02-18",
-    "deadline": "2026-02-10",
-    "location": "San Jose, CA / Virtual",
-    "locationType": "hybrid",
-    "topics": ["general", "ai"],
-    "rolesNeeded": ["judge"],
-    "experienceLevel": "senior",
-    "applyUrl": "https://developerweek-2026-hackathon.devpost.com/",
-    "description": "Nation's largest challenge-driven hackathon, 800+ participants. Co-located with DeveloperWeek conference. Two rounds of judging.",
-    "immigrationEligible": true,
-    "verified": true
-  },
-  {
     "id": "devnetwork-ai-ml-hack-2026",
     "name": "DevNetwork AI + ML Hackathon 2026",
     "organizer": "DevNetwork / AI DevSummit",
@@ -368,7 +353,8 @@
     "applyUrl": "https://devnetwork-ai-ml-hack-2026.devpost.com/",
     "description": "AI/ML focused hackathon co-located with AI DevSummit 2026. Challenge-driven format with sponsor judging rounds.",
     "immigrationEligible": true,
-    "verified": true
+    "verified": false,
+    "verificationNote": "Devpost URL is a projected slug based on naming convention. Verify the page is live before applying."
   },
   {
     "id": "awesome-judging-aggregator",
@@ -382,8 +368,8 @@
     "rolesNeeded": ["judge"],
     "experienceLevel": "any",
     "applyUrl": "https://github.com/hardik-vala/awesome-judging",
-    "description": "Curated GitHub list of judging opportunities for O-1A/EB-1 visa qualification. Includes hackathons, awards (CODiE, Stevie, Globee), and startup programs.",
-    "immigrationEligible": true,
+    "description": "Curated GitHub list of judging opportunities. Aggregator of links to hackathons, awards (CODiE, Stevie, Globee), and startup programs — not an opportunity itself.",
+    "immigrationEligible": false,
     "verified": true
   },
   {
@@ -403,8 +389,8 @@
     "verified": true
   },
   {
-    "id": "globee-golden-bridge-judge",
-    "name": "Globee Golden Bridge Awards Judge",
+    "id": "globee-innovation-awards-judge",
+    "name": "Globee Innovation Awards Judge",
     "organizer": "Globee Awards",
     "date": "ongoing",
     "deadline": "ongoing",
@@ -414,7 +400,7 @@
     "rolesNeeded": ["judge"],
     "experienceLevel": "senior",
     "applyUrl": "https://globee-innovation.secure-platform.com/a/judgeSolicitationProfiles/create",
-    "description": "Annual awards honoring business excellence in technology, leadership, innovation, and customer service. Apply to join the judging panel.",
+    "description": "Annual Innovation Awards honoring business excellence in technology, leadership, and customer service. Apply to join the judging panel via Globee's secure platform.",
     "immigrationEligible": true,
     "verified": true
   },

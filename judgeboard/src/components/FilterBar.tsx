@@ -38,7 +38,6 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
               <option value="web3">Web3 / Blockchain</option>
               <option value="health">Healthcare</option>
               <option value="social-impact">Social Impact</option>
-              <option value="security">Security</option>
               <option value="education">Education</option>
               <option value="general">General</option>
             </select>
@@ -46,8 +45,8 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
           <div>
             <label htmlFor="filter-experience" className="sr-only">Experience level</label>
             <select id="filter-experience" value={filters.experienceLevel} onChange={(e) => update("experienceLevel", e.target.value)} className={selectClass}>
-              <option value="">Any Experience</option>
-              <option value="any">Beginner Friendly</option>
+              <option value="">All Experience Levels</option>
+              <option value="any">All Levels</option>
               <option value="senior">Senior</option>
               <option value="expert">Expert</option>
             </select>

@@ -1,10 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen, closeMenu]);
 
   return (
     <header className="bg-hero">
@@ -32,6 +43,7 @@ export default function Header() {
           onClick={() => setMenuOpen(!menuOpen)}
           className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-hero-subtle sm:hidden"
           aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
           aria-label="Toggle navigation menu"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
@@ -45,11 +57,11 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-hero-subtle px-4 pb-4 sm:hidden" aria-label="Mobile navigation">
+        <nav id="mobile-nav" className="border-t border-hero-subtle px-4 pb-4 sm:hidden" aria-label="Mobile navigation">
           <div className="flex flex-col gap-1 pt-2">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-faint hover:bg-hero-subtle hover:text-white">Browse</Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-faint hover:bg-hero-subtle hover:text-white">About</Link>
-            <Link href="/about#submit" onClick={() => setMenuOpen(false)} className="mt-1 rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-semibold text-white hover:bg-accent-hover">Submit Opportunity</Link>
+            <Link href="/" onClick={closeMenu} className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-faint hover:bg-hero-subtle hover:text-white">Browse</Link>
+            <Link href="/about" onClick={closeMenu} className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-faint hover:bg-hero-subtle hover:text-white">About</Link>
+            <Link href="/about#submit" onClick={closeMenu} className="mt-1 rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-semibold text-white hover:bg-accent-hover">Submit Opportunity</Link>
           </div>
         </nav>
       )}
