@@ -44,7 +44,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
       }`}
       aria-labelledby={`card-title-${hackathon.id}`}
     >
-      <div className="p-5">
+      <div className="p-4 sm:p-5">
         {/* Header */}
         <div className="mb-3 flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -98,7 +98,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
         </div>
 
         {/* Metadata */}
-        <div className="mb-4 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
+        <div className="mb-4 grid grid-cols-1 gap-x-4 gap-y-1.5 text-sm sm:grid-cols-2">
           <div>
             <span className="text-ink-muted">Date </span>
             <span className="font-medium text-ink">{formatDate(hackathon.date)}</span>
@@ -123,7 +123,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-3 border-t border-rule-soft pt-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-rule-soft pt-4">
           <div className="text-sm">
             {isOngoing ? (
               <span className="font-medium text-positive">Always open</span>

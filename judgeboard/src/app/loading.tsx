@@ -1,6 +1,6 @@
 function SkeletonCard() {
   return (
-    <div className="animate-pulse rounded-xl border border-rule bg-surface p-5">
+    <div className="animate-pulse rounded-xl border border-rule bg-surface p-4 sm:p-5">
       <div className="mb-3">
         <div className="h-5 w-3/4 rounded bg-rule-soft" />
         <div className="mt-2 h-4 w-1/3 rounded bg-rule-soft/60" />
@@ -13,7 +13,7 @@ function SkeletonCard() {
         <div className="h-5 w-14 rounded-md bg-rule-soft/60" />
         <div className="h-5 w-12 rounded-md bg-rule-soft/60" />
       </div>
-      <div className="mb-4 grid grid-cols-2 gap-2">
+      <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
         <div className="h-4 w-24 rounded bg-rule-soft/60" />
         <div className="h-4 w-20 rounded bg-rule-soft/60" />
       </div>

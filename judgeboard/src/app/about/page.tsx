@@ -31,7 +31,7 @@ export default function AboutPage() {
         <section id="submit">
           <h2 className="text-lg font-semibold text-ink">Submit an Opportunity</h2>
           <p className="mt-3">Know of a hackathon looking for judges or mentors? We&apos;d love to add it. Email us with the event name, dates, location, and a link to the judge/mentor application page.</p>
-          <a href="mailto:hello@judgeboard.dev?subject=New%20Opportunity%20Submission&body=Event%20name%3A%0AOrganizer%3A%0ADate%3A%0ALocation%3A%0AApplication%20URL%3A%0ARoles%20needed%20(judge%2Fmentor)%3A%0ABrief%20description%3A" className="mt-4 inline-flex rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2">Submit via Email</a>
+          <a href="mailto:hello@judgeboard.dev?subject=New%20Opportunity%20Submission&body=Event%20name%3A%0AOrganizer%3A%0ADate%3A%0ALocation%3A%0AApplication%20URL%3A%0ARoles%20needed%20(judge%2Fmentor)%3A%0ABrief%20description%3A" className="mt-4 inline-flex w-full justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2 sm:w-auto">Submit via Email</a>
         </section>
         <section>
           <h2 className="text-lg font-semibold text-ink">For Organizers</h2>
