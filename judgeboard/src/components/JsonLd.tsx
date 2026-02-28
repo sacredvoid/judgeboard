@@ -7,14 +7,14 @@ export default function JsonLd() {
         name: "JudgeBoard",
         url: "https://judgeboard.dev",
         description:
-          "Directory of hackathons actively seeking judges and mentors.",
+          "Directory of competitions actively seeking judges and mentors — hackathons, startup competitions, industry awards, science fairs, and grant panels.",
       },
       {
         "@type": "Organization",
         name: "JudgeBoard",
         url: "https://judgeboard.dev",
         description:
-          "A curated directory connecting experienced professionals with hackathon judging and mentoring opportunities.",
+          "A curated directory connecting experienced professionals with judging and mentoring opportunities across hackathons, startup competitions, industry awards, science fairs, and grant review panels.",
       },
     ],
   };

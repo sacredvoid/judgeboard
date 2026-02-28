@@ -27,6 +27,22 @@ const topicLabels: Record<string, string> = {
   general: "General",
 };
 
+const categoryLabels: Record<string, string> = {
+  hackathon: "Hackathon",
+  startup: "Startup & Entrepreneurship",
+  awards: "Industry Awards",
+  science: "Science & Engineering",
+  "grant-review": "Grant & Research Review",
+};
+
+const categoryColors: Record<string, string> = {
+  hackathon: "bg-blue-50 text-blue-700 border-blue-200",
+  startup: "bg-amber-50 text-amber-700 border-amber-200",
+  awards: "bg-purple-50 text-purple-700 border-purple-200",
+  science: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "grant-review": "bg-rose-50 text-rose-700 border-rose-200",
+};
+
 const locationLabel: Record<string, string> = {
   "in-person": "In-Person",
   virtual: "Virtual",
@@ -57,6 +73,11 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
             <p className="mt-0.5 text-sm text-ink-muted">{hackathon.organizer}</p>
           </div>
           <div className="flex shrink-0 gap-1.5">
+            <span
+              className={`inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold ${categoryColors[hackathon.category] || "bg-surface-dim text-ink-secondary border-rule"}`}
+            >
+              {categoryLabels[hackathon.category] || hackathon.category}
+            </span>
             {hackathon.immigrationEligible && (
               <span
                 className="inline-flex items-center rounded-md bg-accent-light px-2 py-0.5 text-xs font-semibold text-accent-deep"

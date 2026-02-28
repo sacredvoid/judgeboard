@@ -10,7 +10,7 @@ interface DirectoryProps {
   hackathons: Hackathon[];
 }
 
-const emptyFilters: Filters = { locationType: "", topic: "", experienceLevel: "", roleNeeded: "" };
+const emptyFilters: Filters = { locationType: "", topic: "", experienceLevel: "", roleNeeded: "", category: "" };
 
 export default function Directory({ hackathons }: DirectoryProps) {
   const [filters, setFilters] = useState<Filters>(emptyFilters);
@@ -39,6 +39,7 @@ export default function Directory({ hackathons }: DirectoryProps) {
     const query = searchQuery.toLowerCase().trim();
     return hackathons
       .filter((h) => {
+        if (filters.category && h.category !== filters.category) return false;
         if (filters.locationType && h.locationType !== filters.locationType) return false;
         if (filters.topic && !h.topics.includes(filters.topic)) return false;
         if (filters.experienceLevel && h.experienceLevel !== filters.experienceLevel) return false;

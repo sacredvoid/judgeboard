@@ -56,6 +56,17 @@ export default function FilterBar({
             </select>
           </div>
           <div>
+            <label htmlFor="filter-category" className="sr-only">Category</label>
+            <select id="filter-category" value={filters.category} onChange={(e) => update("category", e.target.value)} className={selectClass}>
+              <option value="">All Categories</option>
+              <option value="hackathon">Hackathon</option>
+              <option value="startup">Startup & Entrepreneurship</option>
+              <option value="awards">Industry Awards</option>
+              <option value="science">Science & Engineering</option>
+              <option value="grant-review">Grant & Research Review</option>
+            </select>
+          </div>
+          <div>
             <label htmlFor="filter-topic" className="sr-only">Topic</label>
             <select id="filter-topic" value={filters.topic} onChange={(e) => update("topic", e.target.value)} className={selectClass}>
               <option value="">All Topics</option>
