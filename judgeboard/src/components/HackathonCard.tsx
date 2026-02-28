@@ -64,37 +64,37 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
       aria-labelledby={`card-title-${hackathon.id}`}
     >
       <div className="p-4 sm:p-5">
-        {/* Header */}
-        <div className="mb-3 flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <h3 id={`card-title-${hackathon.id}`} className="text-base font-semibold leading-snug text-ink">
-              {hackathon.name}
-            </h3>
-            <p className="mt-0.5 text-sm text-ink-muted">{hackathon.organizer}</p>
-          </div>
-          <div className="flex shrink-0 gap-1.5">
+        {/* Category + status badges */}
+        <div className="mb-2 flex flex-wrap items-center gap-1.5">
+          <span
+            className={`inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold ${categoryColors[hackathon.category] || "bg-surface-dim text-ink-secondary border-rule"}`}
+          >
+            {categoryLabels[hackathon.category] || hackathon.category}
+          </span>
+          {hackathon.immigrationEligible && (
             <span
-              className={`inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold ${categoryColors[hackathon.category] || "bg-surface-dim text-ink-secondary border-rule"}`}
+              className="inline-flex items-center rounded-md bg-accent-light px-2 py-0.5 text-xs font-semibold text-accent-deep"
+              title="Counts toward O-1A/EB-1 portfolio"
             >
-              {categoryLabels[hackathon.category] || hackathon.category}
+              O-1A
             </span>
-            {hackathon.immigrationEligible && (
-              <span
-                className="inline-flex items-center rounded-md bg-accent-light px-2 py-0.5 text-xs font-semibold text-accent-deep"
-                title="Counts toward O-1A/EB-1 portfolio"
-              >
-                O-1A
-              </span>
-            )}
-            {hackathon.verified === false && (
-              <span
-                className="inline-flex items-center rounded-md bg-caution-light px-2 py-0.5 text-xs font-medium text-caution"
-                title={hackathon.verificationNote || "Not fully verified"}
-              >
-                Unverified
-              </span>
-            )}
-          </div>
+          )}
+          {hackathon.verified === false && (
+            <span
+              className="inline-flex items-center rounded-md bg-caution-light px-2 py-0.5 text-xs font-medium text-caution"
+              title={hackathon.verificationNote || "Not fully verified"}
+            >
+              Unverified
+            </span>
+          )}
+        </div>
+
+        {/* Header */}
+        <div className="mb-3">
+          <h3 id={`card-title-${hackathon.id}`} className="text-base font-semibold leading-snug text-ink">
+            {hackathon.name}
+          </h3>
+          <p className="mt-0.5 text-sm text-ink-muted">{hackathon.organizer}</p>
         </div>
 
         <p className="mb-4 text-sm leading-relaxed text-ink-secondary">
