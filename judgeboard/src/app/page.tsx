@@ -10,11 +10,10 @@ export default function Home() {
       <section className="bg-hero pb-14 pt-12 sm:pb-16 sm:pt-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Find hackathons that need your expertise
+            Find competitions that need your expertise
           </h1>
           <p className="mt-4 max-w-2xl text-base text-ink-muted sm:text-lg">
-            A curated directory of hackathons actively seeking judges and mentors.
-            Browse, filter, apply.
+            A curated directory of hackathons, startup competitions, industry awards, science fairs, and grant panels actively seeking judges and mentors.
           </p>
           <p className="mt-5 text-sm text-ink-muted">
             <span className="text-accent-muted">Building an O-1A / EB-1 portfolio?</span>{" "}

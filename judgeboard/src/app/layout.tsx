@@ -18,9 +18,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "JudgeBoard — Find Hackathon Judge & Mentor Opportunities",
-  description: "Browse hackathons actively seeking judges and mentors. Filter by topic, format, and experience level. Perfect for professionals building O-1A/EB-1 immigration portfolios.",
-  keywords: ["hackathon judge", "hackathon mentor", "judging opportunities", "O-1A visa", "EB-1 green card", "hackathon volunteering", "tech judge"],
+  title: "JudgeBoard — Find Competition Judge & Mentor Opportunities",
+  description: "Browse hackathons, startup competitions, industry awards, science fairs, and grant panels actively seeking judges and mentors. Filter by category, topic, format, and experience level. Perfect for professionals building O-1A/EB-1 immigration portfolios.",
+  keywords: ["competition judge", "hackathon judge", "startup competition judge", "science fair judge", "industry awards judge", "grant reviewer", "hackathon mentor", "judging opportunities", "O-1A visa", "EB-1 green card"],
   metadataBase: new URL("https://judgeboard.dev"),
   alternates: { canonical: "/" },
   icons: {
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "JudgeBoard — Find Hackathon Judge & Mentor Opportunities",
-    description: "The directory of hackathons actively seeking judges and mentors. Browse, filter, and apply.",
+    title: "JudgeBoard — Find Competition Judge & Mentor Opportunities",
+    description: "The directory of competitions actively seeking judges and mentors — hackathons, startup competitions, awards, science fairs, and more.",
     type: "website",
     url: "https://judgeboard.dev",
     siteName: "JudgeBoard",
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "JudgeBoard — Hackathon Judge & Mentor Directory",
-    description: "Find hackathons that need your expertise. Browse judge and mentor opportunities.",
+    title: "JudgeBoard — Competition Judge & Mentor Directory",
+    description: "Find competitions that need your expertise. Browse judge and mentor opportunities across hackathons, awards, science fairs, and more.",
     images: ["/twitter-card.png"],
   },
 };

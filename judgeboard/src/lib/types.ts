@@ -1,7 +1,15 @@
+export type CompetitionCategory =
+  | "hackathon"
+  | "startup"
+  | "awards"
+  | "science"
+  | "grant-review";
+
 export interface Hackathon {
   id: string;
   name: string;
   organizer: string;
+  category: CompetitionCategory;
   date: string;
   deadline: string;
   location: string;
@@ -21,4 +29,5 @@ export interface Filters {
   topic: string;
   experienceLevel: string;
   roleNeeded: string;
+  category: string;
 }
