@@ -24,6 +24,32 @@ export default function AboutPage() {
           </ul>
         </section>
         <section>
+          <h2 className="text-lg font-semibold text-ink">Competition Categories</h2>
+          <p className="mt-3">We organize opportunities into five categories so you can find the right fit for your expertise and goals:</p>
+          <dl className="mt-4 space-y-4">
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+              <dt className="font-semibold text-blue-700">Hackathon</dt>
+              <dd className="mt-1 text-sm text-ink-secondary">Time-boxed building events (typically 24-72 hours) where teams create projects from scratch. Judges evaluate demos on creativity, execution, and impact. Includes university hackathons, MLH events, and corporate hack days.</dd>
+            </div>
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+              <dt className="font-semibold text-amber-700">Startup & Entrepreneurship</dt>
+              <dd className="mt-1 text-sm text-ink-secondary">Pitch competitions, accelerator programs, and business plan contests. Judges evaluate startup viability, market potential, and team strength. Includes MassChallenge, Rice RBPC, Hult Prize, and Techstars Startup Weekend.</dd>
+            </div>
+            <div className="rounded-lg border border-purple-200 bg-purple-50 p-4">
+              <dt className="font-semibold text-purple-700">Industry Awards</dt>
+              <dd className="mt-1 text-sm text-ink-secondary">Professional recognition programs where expert panels evaluate nominations and submissions. High prestige and often relevant for immigration portfolios. Includes Stevie Awards, Webby Awards, Edison Awards, and CODiE Awards.</dd>
+            </div>
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
+              <dt className="font-semibold text-emerald-700">Science & Engineering</dt>
+              <dd className="mt-1 text-sm text-ink-secondary">STEM fairs, research competitions, and robotics events with rigorous judging criteria. Judges evaluate scientific methodology, innovation, and technical execution. Includes Regeneron ISEF, FIRST Robotics, Science Olympiad, and VEX.</dd>
+            </div>
+            <div className="rounded-lg border border-rose-200 bg-rose-50 p-4">
+              <dt className="font-semibold text-rose-700">Grant & Research Review</dt>
+              <dd className="mt-1 text-sm text-ink-secondary">Institutional funding panels where experts evaluate grant proposals and research applications. Very high stakes for applicants. Includes NSF SBIR, NIH peer review, and DOE merit review. Often compensated.</dd>
+            </div>
+          </dl>
+        </section>
+        <section>
           <h2 className="text-lg font-semibold text-ink">O-1A / EB-1 Immigration</h2>
           <p className="mt-3">Serving as a judge for hackathons and competitions can be used as evidence for the &quot;Judging the work of others&quot; criterion in O-1A visa and EB-1A green card applications. We flag opportunities that are particularly relevant — typically larger, well-known events with formal judging panels.</p>
           <p className="mt-3">Look for the <span className="inline-flex items-center rounded-md bg-accent-light px-2 py-0.5 text-xs font-semibold text-accent-deep">O-1A</span> badge on listings. Always consult with an immigration attorney about your specific case.</p>
