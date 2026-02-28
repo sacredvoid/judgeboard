@@ -15,19 +15,19 @@ export function formatDate(dateStr: string): string {
 
 export function isDeadlineSoon(deadline: string): boolean {
   if (isSpecialDate(deadline)) return false;
-  const deadlineDate = new Date(deadline + "T23:59:59Z");
-  const now = new Date();
-  const daysUntil = (deadlineDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
+  const deadlineMs = new Date(deadline + "T23:59:59Z").getTime();
+  const nowMs = Date.now();
+  const daysUntil = (deadlineMs - nowMs) / (1000 * 60 * 60 * 24);
   return daysUntil >= 0 && daysUntil <= 14;
 }
 
 export function isExpired(deadline: string): boolean {
   if (isSpecialDate(deadline)) return false;
-  return new Date(deadline + "T23:59:59Z") < new Date();
+  return new Date(deadline + "T23:59:59Z").getTime() < Date.now();
 }
 
 export function getDeadlineSort(deadline: string): number {
-  if (deadline === "ongoing") return Infinity;
-  if (deadline === "unknown") return Infinity;
+  if (deadline === "ongoing") return Number.MAX_SAFE_INTEGER - 1;
+  if (deadline === "unknown") return Number.MAX_SAFE_INTEGER;
   return new Date(deadline + "T00:00:00Z").getTime();
 }

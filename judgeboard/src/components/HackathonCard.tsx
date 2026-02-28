@@ -4,10 +4,14 @@ import { formatDate, isDeadlineSoon, isExpired } from "@/lib/dates";
 function isSafeUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
-    return parsed.protocol === "https:" || parsed.protocol === "http:" || parsed.protocol === "mailto:";
+    return parsed.protocol === "https:";
   } catch {
     return false;
   }
+}
+
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 interface HackathonCardProps {
@@ -19,7 +23,6 @@ const topicLabels: Record<string, string> = {
   web3: "Web3",
   health: "Healthcare",
   "social-impact": "Social Impact",
-  security: "Security",
   education: "Education",
   general: "General",
 };
@@ -92,7 +95,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
               key={role}
               className="inline-flex rounded-md border border-rule px-2 py-0.5 text-xs font-medium text-ink-secondary"
             >
-              {role.charAt(0).toUpperCase() + role.slice(1)}
+              {capitalize(role)}
             </span>
           ))}
         </div>
@@ -116,8 +119,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
             <span className="font-medium text-ink">
               {hackathon.experienceLevel === "any"
                 ? "All levels"
-                : hackathon.experienceLevel.charAt(0).toUpperCase() +
-                  hackathon.experienceLevel.slice(1)}
+                : capitalize(hackathon.experienceLevel)}
             </span>
           </div>
         </div>
