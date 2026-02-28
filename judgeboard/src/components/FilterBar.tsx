@@ -6,9 +6,23 @@ interface FilterBarProps {
   filters: Filters;
   onFilterChange: (filters: Filters) => void;
   resultCount: number;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
+  hideExpired: boolean;
+  onHideExpiredChange: (hide: boolean) => void;
+  expiredCount: number;
 }
 
-export default function FilterBar({ filters, onFilterChange, resultCount }: FilterBarProps) {
+export default function FilterBar({
+  filters,
+  onFilterChange,
+  resultCount,
+  searchQuery,
+  onSearchChange,
+  hideExpired,
+  onHideExpiredChange,
+  expiredCount,
+}: FilterBarProps) {
   const update = (key: keyof Filters, value: string) => {
     onFilterChange({ ...filters, [key]: value });
   };
@@ -20,6 +34,17 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
     <div className="rounded-xl border border-rule bg-surface p-4 shadow-sm">
       <fieldset>
         <legend className="sr-only">Filter opportunities</legend>
+        <div className="mb-3">
+          <label htmlFor="filter-search" className="sr-only">Search by name or organizer</label>
+          <input
+            id="filter-search"
+            type="search"
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder="Search by name or organizer..."
+            className="min-h-[44px] w-full rounded-lg border border-rule bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+          />
+        </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <div>
             <label htmlFor="filter-format" className="sr-only">Format</label>
@@ -45,8 +70,8 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
           <div>
             <label htmlFor="filter-experience" className="sr-only">Experience level</label>
             <select id="filter-experience" value={filters.experienceLevel} onChange={(e) => update("experienceLevel", e.target.value)} className={selectClass}>
-              <option value="">All Experience Levels</option>
-              <option value="any">All Levels</option>
+              <option value="">Any Experience</option>
+              <option value="any">Open to All</option>
               <option value="senior">Senior</option>
               <option value="expert">Expert</option>
             </select>
@@ -59,8 +84,21 @@ export default function FilterBar({ filters, onFilterChange, resultCount }: Filt
               <option value="mentor">Mentor</option>
             </select>
           </div>
-          <div className="mt-1 text-sm font-medium text-ink-muted sm:ml-auto sm:mt-0" role="status" aria-live="polite">
-            {resultCount} {resultCount === 1 ? "opportunity" : "opportunities"}
+          <div className="flex items-center gap-4 sm:ml-auto">
+            {expiredCount > 0 && (
+              <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-muted">
+                <input
+                  type="checkbox"
+                  checked={hideExpired}
+                  onChange={(e) => onHideExpiredChange(e.target.checked)}
+                  className="h-4 w-4 rounded border-rule text-accent accent-accent focus:ring-accent/20"
+                />
+                Hide expired ({expiredCount})
+              </label>
+            )}
+            <div className="text-sm font-medium text-ink-muted" role="status" aria-live="polite">
+              {resultCount} {resultCount === 1 ? "opportunity" : "opportunities"}
+            </div>
           </div>
         </div>
       </fieldset>

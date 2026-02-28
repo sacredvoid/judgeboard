@@ -24,9 +24,9 @@ export default function JsonLd() {
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(structuredData)
+          .replace(/&/g, "\\u0026")
           .replace(/</g, "\\u003c")
-          .replace(/>/g, "\\u003e")
-          .replace(/&/g, "\\u0026"),
+          .replace(/>/g, "\\u003e"),
       }}
     />
   );

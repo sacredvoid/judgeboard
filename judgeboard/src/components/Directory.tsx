@@ -10,15 +10,33 @@ interface DirectoryProps {
   hackathons: Hackathon[];
 }
 
+const emptyFilters: Filters = { locationType: "", topic: "", experienceLevel: "", roleNeeded: "" };
+
 export default function Directory({ hackathons }: DirectoryProps) {
-  const [filters, setFilters] = useState<Filters>({
-    locationType: "",
-    topic: "",
-    experienceLevel: "",
-    roleNeeded: "",
-  });
+  const [filters, setFilters] = useState<Filters>(emptyFilters);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [hideExpired, setHideExpired] = useState(false);
+
+  // Precompute expiration and sort values once per hackathon instead of O(n log n) times in sort
+  const precomputed = useMemo(() => {
+    const map = new Map<string, { expired: boolean; sortKey: number }>();
+    for (const h of hackathons) {
+      map.set(h.id, { expired: isExpired(h.deadline), sortKey: getDeadlineSort(h.deadline) });
+    }
+    return map;
+  }, [hackathons]);
+
+  const expiredCount = useMemo(
+    () => {
+      let count = 0;
+      for (const v of precomputed.values()) if (v.expired) count++;
+      return count;
+    },
+    [precomputed]
+  );
 
   const filtered = useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
     return hackathons
       .filter((h) => {
         if (filters.locationType && h.locationType !== filters.locationType) return false;
@@ -26,25 +44,43 @@ export default function Directory({ hackathons }: DirectoryProps) {
         if (filters.experienceLevel && h.experienceLevel !== filters.experienceLevel) return false;
         if (filters.roleNeeded && !h.rolesNeeded.includes(filters.roleNeeded as "judge" | "mentor"))
           return false;
+        if (query && !h.name.toLowerCase().includes(query) && !h.organizer.toLowerCase().includes(query))
+          return false;
+        if (hideExpired && precomputed.get(h.id)!.expired) return false;
         return true;
       })
       .sort((a, b) => {
-        const aExpired = isExpired(a.deadline);
-        const bExpired = isExpired(b.deadline);
-        if (aExpired !== bExpired) return aExpired ? 1 : -1;
-        return getDeadlineSort(a.deadline) - getDeadlineSort(b.deadline);
+        const pa = precomputed.get(a.id)!;
+        const pb = precomputed.get(b.id)!;
+        if (pa.expired !== pb.expired) return pa.expired ? 1 : -1;
+        return pa.sortKey - pb.sortKey;
       });
-  }, [hackathons, filters]);
+  }, [hackathons, filters, searchQuery, hideExpired, precomputed]);
+
+  const clearAll = () => {
+    setFilters(emptyFilters);
+    setSearchQuery("");
+    setHideExpired(false);
+  };
 
   return (
     <div className="space-y-5">
-      <FilterBar filters={filters} onFilterChange={setFilters} resultCount={filtered.length} />
+      <FilterBar
+        filters={filters}
+        onFilterChange={setFilters}
+        resultCount={filtered.length}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        hideExpired={hideExpired}
+        onHideExpiredChange={setHideExpired}
+        expiredCount={expiredCount}
+      />
       {filtered.length === 0 ? (
         <div className="rounded-xl border border-rule bg-surface py-16 text-center">
           <p className="text-base font-medium text-ink-secondary">No opportunities match your filters</p>
           <p className="mt-2 text-sm text-ink-muted">Try adjusting your filters or check back later.</p>
           <button
-            onClick={() => setFilters({ locationType: "", topic: "", experienceLevel: "", roleNeeded: "" })}
+            onClick={clearAll}
             className="mt-4 text-sm font-semibold text-accent hover:text-accent-hover focus:outline-none focus:underline"
           >
             Clear all filters
