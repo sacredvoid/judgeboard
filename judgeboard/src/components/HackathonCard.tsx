@@ -56,14 +56,14 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
 
   return (
     <article
-      className={`group rounded-xl border border-rule bg-surface transition-all ${
+      className={`group flex h-full flex-col rounded-xl border border-rule bg-surface transition-all ${
         deadlinePassed
           ? "opacity-50"
           : "hover:border-ink-faint hover:shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
       }`}
       aria-labelledby={`card-title-${hackathon.id}`}
     >
-      <div className="p-4 sm:p-5">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
         {/* Category + status badges */}
         <div className="mb-2 flex flex-wrap items-center gap-1.5">
           <span
@@ -146,7 +146,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-rule-soft pt-4">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-rule-soft pt-4">
           <div className="text-sm">
             {isOngoing ? (
               <span className="font-medium text-positive">Always open</span>
